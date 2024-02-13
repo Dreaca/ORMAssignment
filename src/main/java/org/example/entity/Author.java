@@ -1,6 +1,9 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -11,7 +14,8 @@ public class Author {
     @Column(name = "author_id")
     private int authorId;
     private String name;
-    @OneToMany(mappedBy = "author" )
+    @OneToMany(mappedBy = "author" ,orphanRemoval = true,cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Book> book;
 
 

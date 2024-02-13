@@ -1,5 +1,6 @@
 package org.example.entity;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import jakarta.persistence.*;
 
 import java.time.Year;
@@ -12,7 +13,7 @@ public class Book {
     private String title;
     private Year publicationYear;
     private Double price;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "auth_id",referencedColumnName = "author_id")
     private Author author;
 
