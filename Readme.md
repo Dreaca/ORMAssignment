@@ -69,6 +69,9 @@ Hibernate: select b1_0.id,b1_0.auth_id,b1_0.price,b1_0.publicationYear,b1_0.titl
    Hibernate: select a1_0.author_id,a1_0.country,a1_0.name from Author a1_0 where a1_0.author_id=?
    | 2| Half of a Yellow Sun| 2006| 2699.25
    | 3| Americanah| 2013| 2812.5
-7. 
+7.  @ManyToOne
+     @JoinColumn(name = "auth_id",referencedColumnName = "author_id")
+     private Author author;
+    
 10. Hibernate: select a1_0.author_id,a1_0.country,a1_0.name from Author a1_0 join Book b1_0 on a1_0.author_id=b1_0.auth_id group by a1_0.author_id having count(b1_0.id)>(select avg(derived1_0.bookCount) from (select count(b2_0.id) from Book b2_0 group by b2_0.auth_id) derived1_0(bookCount))
    Chimamanda Ngozi Adichie
