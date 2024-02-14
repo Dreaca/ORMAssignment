@@ -18,18 +18,17 @@ public class Main {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = null;
 
-        saveData(session, transaction);
+        saveData(session, transaction); // used to save basic data to work the program. Should be commented after first use.
         get2010(session, transaction);
-        increaseby10(session, transaction);
-        deleteAuthor(session, transaction);
-        findAverage(session, transaction);
-        getAllAuthorBooks(session, transaction);
-        countryBooks(session, transaction);
-        moreThanAverage(session, transaction);
+//        increaseby10(session, transaction);
+//        deleteAuthor(session, transaction);
+//        findAverage(session, transaction);
+//        getAllAuthorBooks(session, transaction);
+//        countryBooks(session, transaction);
+//        moreThanAverage(session, transaction);
 //        getBookAv(session,transaction);
         session.close();
     }
-
     public static void saveData(Session session, Transaction transaction) {
 
         transaction = session.beginTransaction();
@@ -70,6 +69,10 @@ public class Main {
         author3.setBook(books3);
         book6.setAuthor(author3);
         book5.setAuthor(author3);
+
+        session.save(author3);
+        session.save(book5);
+        session.save(book6);
         transaction.commit();
     }
 
